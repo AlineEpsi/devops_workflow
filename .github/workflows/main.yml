@@ -1,7 +1,7 @@
 # Nom du workflow
 name: Mon workflow
 # Condition pour lancer le workflow
-on: [commit]
+on: [push]
 jobs: 
   # Première tâche
   mon-premier-job:
