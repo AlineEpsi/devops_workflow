@@ -7,3 +7,10 @@ jobs:
   mon-premier-job:
     runs-on: ubuntu-latest
     steps:
+      - run : echo "mon premier job a été lancé"
+    #Deuxième tâche
+  mon-deeuxieme-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run : echo "mon deuxième job"
+      - run : echo "mon test de job"
