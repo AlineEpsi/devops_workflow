@@ -1,16 +1,32 @@
 # Nom du workflow
-name: My Workflow
+name: Mon workflow
 # Condition pour lancer le workflow
-on: [push]
+on:
+  push:
+    branches: [ "development" ]
+  pull_request:
+    branches: [ "main" ]
 # Tâches à effectuer
-jobs:
+jobs: 
+  # Première tâche
   mon-premier-job:
     runs-on: ubuntu-latest
+    needs: [mon-deuxieme-job, idle-job]
     steps:
-      - run : echo "mon premier job a été lancé"
-    #Deuxième tâche
-  mon-deeuxieme-job:
+      - run: echo "Mon premier job a été lancé"
+      # Récupération du contenu du répertoire
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: ls -l
+  # Deuxièmre tâche
+  mon-deuxieme-job:
     runs-on: ubuntu-latest
     steps:
-      - run : echo "mon deuxième job"
-      - run : echo "mon test de job"
+      - run: echo "Deuxième job"
+      - run: echo "test" > test.txt
+      - run: ls -l
+      - run: cat test.txt
+  idle-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ""
