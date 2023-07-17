@@ -1,0 +1,9 @@
+# Nom du workflow
+name: My Workflow
+# Condition pour lancer le workflow
+on: [push]
+# Tâches à effectuer
+jobs:
+  mon-premier-job:
+    runs-on: ubuntu-latest
+    steps:
